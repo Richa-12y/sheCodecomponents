@@ -1,0 +1,31 @@
+.modal_box_container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  /* opacity: 0.2; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal_container {
+  min-width: 450px;
+  min-height: 180px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: 2px solid black;
+  z-index: 1000;
+  position: relative;
+}
+
+.modal-close-button {
+  padding: 10px 15px 10px 15px;
+  color: blue;
+  outline: none;
+  border: none;
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  background-color: blue;
+  color: #ffffff;
+}
