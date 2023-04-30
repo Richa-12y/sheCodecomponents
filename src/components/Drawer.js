@@ -26,56 +26,65 @@ const Drawer = () => {
     { icon: <MdDelete size={"1.3rem"} />, text: "Trash" },
     { icon: <GrFolderCycle size={"1.3rem"} />, text: "Spam" },
   ];
+
+  const parentClick = (e) => {
+    if (e.currentTarget !== e.target) return;
+    console.log(e.isPropagationStopped());
+    setOpen(false);
+  };
   return (
-    <div className={style["drawer_box_container"]}>
+    <>
       <div className={style["button_container"]}>
-        <button onClick={handleOpen}>Rigth</button>
+        <button onClick={handleOpen}>Left</button>
       </div>
       {open && (
-        <div
-          className={style["drawer_box"]}
-          open={open}
-          onClick={() => setOpen(false)}
-        >
-          <GiCancel
-            onClick={() => setOpen(false)}
-            className={style["cancle_button"]}
-          />
-          <div className={style["drawer_body"]}>
-            <div className={style["drawer_header"]}>
-              <div className={style["drawer_header_button_container"]}>
-                {drawerData.map((el, i) => {
-                  return (
-                    <div className={style["drawer_container_text"]} key={i}>
-                      <div>
-                        {el.icon} {el.text}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <hr></hr>
-            <div className={style["drawer_footer"]}>
-              <div className={style["drawer_footer_button_container"]}>
-                {drawerDataSeconds.map((e, index) => {
-                  return (
-                    <div
-                      className={style["drawer_footer_container_text"]}
-                      key={index}
-                    >
-                      <div>
-                        {e.icon} {e.text}
-                      </div>
-                    </div>
-                  );
-                })}
+        <>
+          <div
+            className={style["drawer_box_container"]}
+            onClick={(e) => parentClick(e)}
+          >
+            <div className={style["drawer_box"]} open={open}>
+              <GiCancel
+                onClick={() => setOpen(false)}
+                className={style["cancle_button"]}
+              />
+              <div className={style["drawer_body"]}>
+                <div className={style["drawer_header"]}>
+                  <div className={style["drawer_header_button_container"]}>
+                    {drawerData.map((el, i) => {
+                      return (
+                        <div className={style["drawer_container_text"]} key={i}>
+                          <div>
+                            {el.icon} {el.text}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+                <hr></hr>
+                <div className={style["drawer_footer"]}>
+                  <div className={style["drawer_footer_button_container"]}>
+                    {drawerDataSeconds.map((e, index) => {
+                      return (
+                        <div
+                          className={style["drawer_footer_container_text"]}
+                          key={index}
+                        >
+                          <div>
+                            {e.icon} {e.text}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </>
       )}
-    </div>
+    </>
   );
 };
 
