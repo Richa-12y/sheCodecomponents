@@ -1,0 +1,94 @@
+.navbar_conatiner {
+  display: flex;
+  background-color: #f7f7fa;
+  min-width: 80vw;
+  min-height: 4vh;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.nav_conatiner {
+  display: flex;
+  /* background-color: red; */
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.nav_conatiner > ul {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  height: 4vh;
+}
+
+.setting-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  height: 4vh;
+}
+.home_selecter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7fa;
+  outline: none;
+  border: none;
+  height: 4vh;
+  width: 65px;
+}
+.conatct_selecter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7fa;
+  outline: none;
+  border: none;
+  height: 4vh;
+  width: 68px;
+}
+
+.mobile_drwer {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 50vw;
+  min-height: 99.5vh;
+  /* border: 1px solid grey; */
+  /* background-color: aqua; */
+  transition: 1s ease-in-out;
+  animation: example 2s;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.close_icon {
+  position: absolute;
+  top: 6%;
+  right: 2%;
+}
+.small-nav-container {
+  /* background-color: aqua; */
+  width: 50vw;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  justify-content: space-between;
+}
+
+@keyframes example {
+  from {
+    /* background-color: red; */
+    width: 0%;
+  }
+  to {
+    /* background-color: yellow; */
+    width: 50%;
+  }
+}
