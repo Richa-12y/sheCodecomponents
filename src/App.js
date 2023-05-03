@@ -21,6 +21,7 @@ import { AiFillPrinter } from "react-icons/ai";
 import { FaShareAlt } from "react-icons/fa";
 
 import Navbar from "./Navbar";
+import Basicspeeddial from "./Basicspeeddial";
 function App() {
   const [open, setOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -84,6 +85,7 @@ function App() {
   const optaionData = ["Female", "Male", "Other"];
   const [openbutton, setOpenbutton] = useState(false);
   const [tooltipbuttonname, setTooltipbuttonname] = useState("");
+  const [step, setStep] = useState(1);
   const handleSpeedButton = () => {
     setOpenbutton(true);
   };
@@ -102,6 +104,10 @@ function App() {
   ];
   const hodleNamedata = (buttondata) => {
     setTooltipbuttonname(buttondata.name);
+  };
+  const handleStepClick = (newStep) => {
+    setStep(newStep);
+    console.log(newStep);
   };
   return (
     <div className="app">
@@ -141,41 +147,37 @@ function App() {
         userDetails={userDetails}
       />
       <Navbar />
+      <Basicspeeddial
+        setOpenbutton={setOpenbutton}
+        openbutton={openbutton}
+        actions={actions}
+        tooltipbuttonname={tooltipbuttonname}
+        hodleNamedata={hodleNamedata}
+        setTooltipbuttonname={setInputFiledData}
+        handleSpeedButton={handleSpeedButton}
+      />
       /> */}
-      <div
-        className="basicspeeddial_container"
-        onMouseLeave={() => setOpenbutton(false)}
-      >
-        {openbutton && (
-          <>
-            {actions.map((el, i) => {
-              console.log(el, i);
-              return (
-                <div className="button_parent_container">
-                  {tooltipbuttonname === el.name && (
-                    <div className="tooltip">{el.name}</div>
-                  )}
-                  <div
-                    key={i}
-                    className="button_icon_container"
-                    onMouseEnter={() => hodleNamedata(el)}
-                    onMouseLeave={() => setTooltipbuttonname("")}
-                  >
-                    {el.icon}
-                  </div>
-                </div>
-              );
-            })}
-          </>
-        )}
-
-        <button className="speeddial_button" onMouseEnter={handleSpeedButton}>
-          <GrAdd
-            className={openbutton ? "routerclass" : "addicon"}
-            size={"1.5rem"}
-            color="white"
-          />
-        </button>
+      <div className="stepper">
+        <div className="stepper_inside">
+          <div
+            className={`fst_line_container ${step >= 1 ? "bgcolorgreen" : ""}`}
+            onClick={() => handleStepClick(1)}
+          >
+            1
+          </div>
+          <div
+            className={`sst_line_container ${step >= 2 ? "bgcolorgreen" : ""}`}
+          ></div>
+          <div
+            className={`tst_line_container ${step === 3 ? "done" : ""}`}
+            onClick={() => handleStepClick(3)}
+          ></div>
+        </div>
+        <div className="text_container">
+          <div className="text">Select master blaster campaign settings</div>
+          <div className="text">Create an ad group</div>
+          <div className="text">Create an ad</div>
+        </div>
       </div>
     </div>
   );
